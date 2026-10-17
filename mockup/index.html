@@ -45,6 +45,14 @@ body.ready .hero .eyebrow::before{width:46px}
 .hero h1{font-size:clamp(1.9rem,8.4vw,5rem);margin:0 0 20px;text-shadow:0 4px 30px rgba(0,0,0,.25)}
 .hero h1 em{font-style:italic}
 .hero h1 .ln{display:block;white-space:nowrap}
+/* founder photo */
+.portrait.photo{aspect-ratio:1;max-width:440px;width:100%;padding:0;margin:0;justify-self:center;background:#e9e2d3}
+.portrait.photo::before{z-index:2;pointer-events:none;border-color:rgba(233,196,106,.7)}
+.portrait.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;transition:transform 1.2s var(--ease)}
+.portrait.photo:hover img{transform:scale(1.04)}
+.founder .role{font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:-6px 0 18px}
+.founder h2:first-child{margin-top:0}
+@media(max-width:960px){.portrait.photo{aspect-ratio:1;max-width:380px}}
 /* two-line section heading that breaks in the same place on every screen */
 .h2-lines span{display:block;white-space:nowrap}
 @media(max-width:560px){.h2-lines{font-size:clamp(1.5rem,7.6vw,2.2rem)}}
@@ -234,14 +242,14 @@ body.ready .hero .eyebrow::before{width:46px}
 <!-- founder -->
 <section>
   <div class="wrap founder">
-    <div class="portrait" data-rv>
-      <div><div class="yrs"><span data-count="29">29</span></div><small>Years of experience</small></div>
-    </div>
+    <figure class="portrait photo" data-rv>
+      <img src="assets/img/founder.webp" alt="Anmoll Nackra, Founder of Double 10 Ventures" loading="lazy">
+    </figure>
     <div data-rv>
-      <div class="eyebrow">The founder</div>
-      <h2>Built on real operating experience.</h2>
-      <p>Restaurant operations, kitchen systems, menus and growth, learned on the floor.</p>
-      <a class="btn btn-gold" href="about.html">Meet the Founder</a>
+      <h2>Anmoll Nackra</h2>
+      <div class="role">Founder, Double 10 Ventures</div>
+      <p>29 years in food &amp; beverage: running restaurants, building kitchen systems, shaping menus and growing brands across formats. That first-hand experience guides every engagement and every product we source.</p>
+      <a class="btn btn-gold" href="about.html">Read Anmoll's Story →</a>
     </div>
   </div>
 </section>
