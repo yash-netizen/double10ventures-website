@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Product — Double 10 Ventures (Mockup)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.crumb2{font-size:.84rem;color:var(--brown-2);padding:26px 0 20px}
+.crumb2 a:hover{color:var(--gold)}
+.pd{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:start}
+.gallery{position:sticky;top:96px}
+.main-img{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:1;background:#e9e2d3;cursor:zoom-in;box-shadow:0 20px 44px rgba(59,42,26,.16);animation:rise .9s var(--ease) both;opacity:0;transform:translateY(20px)}
+.main-img img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease-out,opacity .35s}
+.main-img:hover img{transform:scale(1.8)}
+.main-img .sku{position:absolute;left:16px;top:16px;background:rgba(255,253,248,.95);border-radius:8px;padding:4px 11px;font-size:.76rem;font-weight:600;letter-spacing:.05em}
+.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
+.thumbs button{border:2px solid transparent;border-radius:14px;overflow:hidden;aspect-ratio:1;cursor:pointer;padding:0;background:none;transition:.25s;opacity:.7}
+.thumbs button img{width:100%;height:100%;object-fit:cover}
+.thumbs button:hover{opacity:1}
+.thumbs button.on{border-color:var(--gold);opacity:1}
+.info>*{opacity:0;transform:translateY(20px);animation:rise .8s var(--ease) forwards}
+.info>*:nth-child(1){animation-delay:.1s}.info>*:nth-child(2){animation-delay:.18s}.info>*:nth-child(3){animation-delay:.26s}.info>*:nth-child(4){animation-delay:.34s}.info>*:nth-child(5){animation-delay:.42s}.info>*:nth-child(6){animation-delay:.5s}.info>*:nth-child(7){animation-delay:.58s}.info>*:nth-child(8){animation-delay:.66s}
+.info h1{font-size:clamp(2rem,3.6vw,2.9rem);margin:10px 0 10px}
+.meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+.meta span{font-size:.8rem;padding:5px 12px;border-radius:999px;background:var(--cream-2);border:1px solid var(--sand)}
+.desc{color:var(--brown-2);margin-bottom:24px}
+.specs{width:100%;border-collapse:collapse;margin-bottom:28px;font-size:.93rem}
+.specs td{padding:12px 0;border-bottom:1px solid var(--sand)}
+.specs td:first-child{color:var(--brown-2);width:40%}
+.buy{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:22px}
+.buy .qty button{width:44px;height:48px;font-size:1.1rem}
+.buy .qty input{width:60px;height:48px;font-size:1rem}
+.buy .btn{flex:1;min-width:190px}
+.perks{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.perks div{background:#fff;border:1px solid var(--sand);border-radius:12px;padding:14px;font-size:.82rem;color:var(--brown-2);transition:.3s}
+.perks div:hover{border-color:var(--gold-2);transform:translateY(-3px)}
+.perks b{display:block;color:var(--brown);font-size:.9rem;margin-bottom:2px}
+.toast{position:fixed;left:50%;bottom:28px;z-index:80;transform:translate(-50%,120px);background:var(--brown);color:#fff;padding:14px 22px;border-radius:999px;font-size:.92rem;box-shadow:0 14px 30px rgba(0,0,0,.25);transition:transform .5s var(--ease)}
+.toast.show{transform:translate(-50%,0)}
+.toast a{color:var(--gold-2);font-weight:600;margin-left:10px}
+@media(max-width:960px){
+  .pd{grid-template-columns:1fr;gap:34px}
+  .gallery{position:static}
+}
+@media(max-width:560px){ .perks{grid-template-columns:1fr} }
+</style>
+</head>
+<body data-page="products">
+
+<div class="wrap">
+  <div class="crumb2" id="crumb"></div>
+  <div class="pd">
+    <div class="gallery">
+      <div class="main-img" id="mainImg"><img id="big" alt=""><span class="sku" id="sku"></span></div>
+      <div class="thumbs" id="thumbs"></div>
+    </div>
+    <div class="info" id="info"></div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">You may also like</div>
+      <h2>More from the catalogue</h2>
+    </div>
+    <div class="pgrid" id="related"></div>
+  </div>
+</section>
+
+<div class="toast" id="toast">Added to your quote cart <a href="#" id="toastOpen">View quote cart →</a></div>
+
+<script src="assets/site.js"></script>
+<script>
+(function(){
+  var U = D10.img, P = D10.products;
+  var p = D10.bySku(new URLSearchParams(location.search).get('sku')) || P[0];
+  var cat = D10.catBySlug(p.cat);
+  document.title = p.name + ' — Double 10 Ventures (Mockup)';
+
+  document.getElementById('crumb').innerHTML = '<a href="index.html">Home</a> / <a href="supplies.html">Supplies &amp; Sourcing</a> / <a href="products.html?cat=' + cat.slug + '">' + cat.name + '</a> / ' + p.name;
+
+  // gallery: only this product's own photos (p.imgs, if more than one exists); same-category products are never used as stand-ins
+  var same = P.filter(function(x){ return x.sku !== p.sku && x.cat === p.cat; });
+  var views = p.imgs && p.imgs.length ? p.imgs : [p.img];
+  var big = document.getElementById('big');
+  big.src = U(p.img, 1100); big.alt = p.name;
+  document.getElementById('sku').textContent = p.sku;
+  var thumbs = document.getElementById('thumbs');
+  if(views.length < 2) thumbs.style.display = 'none';
+  thumbs.innerHTML = views.map(function(v, i){ return '<button class="' + (i ? '' : 'on') + '" data-v="' + v + '"><img src="' + U(v, 300) + '" alt=""></button>'; }).join('');
+  document.getElementById('thumbs').addEventListener('click', function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    this.querySelectorAll('button').forEach(function(x){ x.classList.remove('on'); }); b.classList.add('on');
+    big.style.opacity = 0; setTimeout(function(){ big.src = U(b.dataset.v, 1100); big.onload = function(){ big.style.opacity = 1; }; }, 200);
+  });
+  var mi = document.getElementById('mainImg');
+  mi.addEventListener('mousemove', function(e){ var r = mi.getBoundingClientRect(); big.style.transformOrigin = ((e.clientX - r.left)/r.width*100) + '% ' + ((e.clientY - r.top)/r.height*100) + '%'; });
+
+  var tbc = '<span class="muted">To be confirmed before publication</span>';
+  document.getElementById('info').innerHTML =
+    '<div class="eyebrow">' + cat.name + (p.mat ? ' · ' + p.mat : '') + '</div>' +
+    '<h1>' + p.name + '</h1>' +
+    '<div class="meta"><span>SKU: <b>' + p.sku + '</b></span><span>' + cat.name + '</span>' + (p.mat ? '<span>' + p.mat + '</span>' : '') + (p.desc ? '' : '<span class="sample" style="padding:5px 12px">Sample listing</span>') + '</div>' +
+    '<p class="desc">' + (p.desc || 'Sample description, to be written by the client.') + '</p>' +
+    '<table class="specs">' +
+      '<tr><td>Material</td><td>' + (p.mat || tbc) + '</td></tr>' +
+      '<tr><td>Finish</td><td>' + (p.finish || tbc) + '</td></tr>' +
+      '<tr><td>Dimensions &amp; capacity</td><td>' + (p.size && p.size !== 'To be confirmed' ? p.size : tbc) + '</td></tr>' +
+      '<tr><td>Available variants</td><td>' + (p.variants && p.variants !== 'To be confirmed' ? p.variants : tbc) + '</td></tr>' +
+      '<tr><td>Minimum order quantity</td><td>' + tbc + '</td></tr>' +
+      '<tr><td>Customisation / branding</td><td>' + tbc + '</td></tr>' +
+    '</table>' +
+    '<div class="buy"><div class="qty"><button data-d="-1">−</button><input id="qty" type="number" min="1" value="1"><button data-d="1">+</button></div>' +
+    '<button class="btn btn-gold add-big" id="addBig"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Add to Quote</button>' +
+    '<a class="btn btn-wa" href="#">Ask on WhatsApp</a></div>' +
+    '';
+
+  var qty = document.getElementById('qty');
+  document.querySelector('.buy .qty').addEventListener('click', function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    qty.value = Math.max(1, (+qty.value || 1) + (+b.dataset.d));
+  });
+  var toast = document.getElementById('toast'), tt;
+  document.getElementById('addBig').addEventListener('click', function(){
+    D10.add(p.sku, Math.max(1, +qty.value || 1), this);
+    toast.classList.add('show'); clearTimeout(tt); tt = setTimeout(function(){ toast.classList.remove('show'); }, 3500);
+  });
+  document.getElementById('toastOpen').onclick = function(e){ e.preventDefault(); D10.openCart(); };
+
+  var rel = same.concat(P.filter(function(x){ return x.sku !== p.sku && x.cat !== p.cat; })).slice(0, 4);
+  document.getElementById('related').innerHTML = rel.map(D10.card).join('');
+  D10.renderCart();
+  D10.reveal();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+# Only the website is published. Client brief, raw photos, prompts and local tool settings stay off GitHub.
+/*
+!/mockup/
+!/index.html
+!/README.md
+!/.gitignore
+.DS_Store
+mockup/assets/img/products/buf-0001-round-chafing-dish.png

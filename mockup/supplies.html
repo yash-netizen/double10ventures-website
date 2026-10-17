@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Supplies & Sourcing — Double 10 Ventures (Mockup)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.page-hero.supply>img{object-position:50% 34%}
+.page-hero.supply::before{background:linear-gradient(90deg,rgba(8,32,26,.96) 0%,rgba(8,32,26,.88) 36%,rgba(8,32,26,.5) 64%,rgba(8,32,26,.18) 100%),linear-gradient(0deg,rgba(8,32,26,.5),transparent 40%)}
+.page-hero.supply h1,.page-hero.supply p{text-shadow:0 2px 20px rgba(8,32,26,.65)}
+@media(max-width:700px){.page-hero.supply>img{object-position:30% 30%}.page-hero.supply::before{background:linear-gradient(180deg,rgba(8,32,26,.62),rgba(8,32,26,.88))}}
+.svc{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;padding:52px 0;scroll-margin-top:90px}
+.svc + .svc{border-top:1px solid var(--sand)}
+.svc:nth-child(even) .svc-img{order:2}
+.svc-img{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:5/4;box-shadow:0 26px 50px rgba(18,52,42,.22);background:#ddd}
+.svc-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.svc-img:hover img{transform:scale(1.07)}
+.svc-img .num{position:absolute;left:22px;top:16px;font-family:'Playfair Display',serif;font-size:3.4rem;font-weight:700;color:rgba(255,255,255,.88);text-shadow:0 4px 20px rgba(0,0,0,.35)}
+.svc h2{font-size:clamp(1.8rem,3vw,2.4rem);margin:10px 0 12px}
+.svc p{color:var(--brown-2);margin-bottom:18px}
+.ticks{list-style:none;display:grid;gap:12px;margin-bottom:26px}
+.ticks li{display:flex;gap:10px;align-items:flex-start;font-size:.95rem}
+.ticks li::before{content:"";flex:none;width:20px;height:20px;margin-top:2px;border-radius:50%;background:var(--gold) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/12px no-repeat}
+.mats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.fields{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.fields .card{padding:24px}
+.fields .card h3{font-size:1.1rem}
+.two .card{padding:38px}
+.two .card h3{font-size:1.6rem}
+.two .card p{margin-bottom:6px}
+.hero-act{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:30px}
+.hsearch{position:relative;flex:1;min-width:240px;max-width:380px}
+.hsearch input{width:100%;padding:14px 18px 14px 44px;border-radius:999px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.12);color:#fff;font-size:.95rem;backdrop-filter:blur(6px);transition:.25s}
+.hsearch input::placeholder{color:rgba(255,255,255,.75)}
+.hsearch input:focus{outline:none;background:#fff;color:var(--brown);border-color:#fff}
+.hsearch input:focus::placeholder{color:var(--brown-2)}
+.hsearch svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:17px;height:17px;stroke:var(--gold-2);fill:none;stroke-width:2;z-index:1}
+.jump{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+.jump a{padding:7px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.3);color:#F0E4CA;font-size:.84rem;transition:.25s}
+.jump a:hover{background:#fff;color:var(--brown);border-color:#fff}
+.jump small{opacity:.7;margin-left:2px}
+.svc-img{display:block}
+.minis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:24px}
+.mini{display:block;background:#fff;border:1px solid var(--sand);border-radius:12px;overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s,border-color .3s}
+.mini:hover{transform:translateY(-3px);border-color:var(--gold-2);box-shadow:0 12px 24px rgba(18,52,42,.12)}
+.mini img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+.mini span{display:block;padding:8px 9px;font-size:.74rem;line-height:1.3;color:var(--brown);font-weight:500;min-height:3.1em}
+@media(max-width:560px){.minis{grid-template-columns:repeat(2,1fr)}.hsearch{max-width:none}}
+@media(max-width:960px){
+  .svc{grid-template-columns:1fr;gap:30px}
+  .svc:nth-child(even) .svc-img{order:0}
+  .fields{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){.fields{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-page="supplies">
+
+<div class="page-hero supply">
+  <img src="assets/img/supplies.webp" alt="Double 10 Ventures restaurant supplies: chafing dish, pots, tableware and cutlery on a dark marble counter">
+  <div class="wrap">
+    <h1>Restaurant supplies, <em>thoughtfully sourced.</em></h1>
+    <p>A curated range for restaurants, hotels and caterers.</p>
+    <div class="hero-act">
+      <a class="btn btn-gold" href="products.html">Browse All Products →</a>
+      <form class="hsearch" action="products.html"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input type="search" name="q" placeholder="Search trays, thalis, copper pans…" aria-label="Search products"></form>
+    </div>
+    <div class="jump" id="jump"></div>
+  </div>
+</div>
+
+<section class="alt" style="padding-top:40px;padding-bottom:40px">
+  <div class="wrap">
+    <div id="cats"></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Why source with Double 10</div>
+      <h2>Supplies chosen for how restaurants actually work</h2>
+    </div>
+    <div class="grid3">
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v6c0 4-3.5 7-8 8-4.5-1-8-4-8-8V7z"/></svg></div><h3>Chosen by operators</h3><p>Every range is selected with 29 years of restaurant operations behind it.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4M3 17l9 4 9-4"/></svg></div><h3>Bulk &amp; custom orders</h3><p>Large orders, restaurant launches and branded pieces.</p><a class="link-arrow" href="contact.html?type=supplies">Make an enquiry</a></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div><h3>India &amp; international</h3><p>Sourcing and export for buyers and projects overseas.</p><a class="link-arrow" href="contact.html?type=supplies">Ask about export</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="steps">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">How it works</div>
+      <h2>Request a quote in three steps</h2>
+    </div>
+    <div class="grid3">
+      <div class="step"><div class="n">1</div><h3>Add to Quote</h3><p>Choose the products you need.</p></div>
+      <div class="step"><div class="n">2</div><h3>Request a Quote</h3><p>Send us your details.</p></div>
+      <div class="step"><div class="n">3</div><h3>We respond</h3><p>We reply with a quote.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:60px">
+  <div class="wrap">
+    <div class="cta-band">
+      <img loading="lazy" src="https://unsplash.com/photos/iacrF-fHr08/download?w=1600" alt="">
+      <h2>Ready to request a quote?</h2>
+      <div class="row"><a class="btn btn-gold" href="products.html">Browse Products →</a><a class="btn btn-line" href="contact.html?type=supplies">Contact Double 10 Ventures</a></div>
+    </div>
+  </div>
+</section>
+
+<script src="assets/site.js"></script>
+<script>
+  var count = function(slug){ return D10.products.filter(function(p){ return p.cat === slug; }).length; };
+  document.getElementById('jump').innerHTML = D10.categories.map(function(c){ return '<a href="#' + c.slug + '">' + c.name + ' <small>' + count(c.slug) + '</small></a>'; }).join('');
+  // each category shows its actual products, so a buyer reaches a product page in one click
+  document.getElementById('cats').innerHTML = D10.categories.map(function(c, i){
+    var list = D10.products.filter(function(p){ return p.cat === c.slug; });
+    var mats = Array.from(new Set(list.map(function(p){ return p.mat; }).filter(Boolean)));
+    return '<div class="svc" id="' + c.slug + '" data-rv><a class="svc-img" href="products.html?cat=' + c.slug + '"><img loading="lazy" src="' + D10.img(c.img, 1000) + '" alt=""' + (c.pos ? ' style="object-position:' + c.pos + '"' : '') + '><span class="num">0' + (i + 1) + '</span></a><div>' +
+      '<div class="eyebrow">Category 0' + (i + 1) + ' · ' + list.length + ' products</div><h2>' + c.name + '</h2><p>' + c.blurb + '.</p>' +
+      (mats.length ? '<div class="mats">' + mats.map(function(m){ return '<span class="tag gold">' + m + '</span>'; }).join('') + '</div>' : '') +
+      '<div class="minis">' + list.slice(0, 4).map(function(p){ return '<a class="mini" href="product.html?sku=' + p.sku + '"><img loading="lazy" src="' + D10.img(p.img, 300) + '" alt=""><span>' + p.name + '</span></a>'; }).join('') + '</div>' +
+      '<a class="btn btn-gold" href="products.html?cat=' + c.slug + '">View all ' + c.name + ' →</a></div></div>';
+  }).join('');
+  D10.pageHero(); D10.reveal();
+</script>
+</body>
+</html>

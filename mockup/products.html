@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Products — Double 10 Ventures (Mockup)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.page-hero{padding:90px 0 100px}
+.shop{display:grid;grid-template-columns:250px minmax(0,1fr);gap:40px;align-items:start}
+.shop>*{min-width:0}
+.side{position:sticky;top:96px;display:grid;gap:30px}
+.side h4{font-family:Inter,sans-serif;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.catlist button{display:flex;justify-content:space-between;width:100%;padding:10px 14px;margin-bottom:4px;border-radius:10px;border:none;background:transparent;cursor:pointer;font-size:.93rem;color:var(--brown-2);text-align:left;transition:.25s}
+.catlist button span{font-size:.78rem;background:var(--cream-2);border-radius:999px;padding:1px 9px;transition:.25s}
+.catlist button:hover{background:var(--cream-2);color:var(--brown);padding-left:18px}
+.catlist button.on{background:var(--brown);color:#fff}
+.catlist button.on span{background:var(--gold);color:#fff}
+.mats label{display:flex;align-items:center;gap:10px;padding:7px 2px;font-size:.93rem;color:var(--brown-2);cursor:pointer}
+.mats input{width:17px;height:17px;accent-color:var(--gold)}
+.help{background:var(--cream-2);border:1px solid var(--sand);border-radius:16px;padding:20px}
+.help b{font-family:'Playfair Display',serif;font-size:1.1rem;display:block;margin-bottom:6px}
+.help p{font-size:.86rem;color:var(--brown-2);margin-bottom:12px}
+.bar{display:flex;gap:14px;align-items:center;margin-bottom:24px;flex-wrap:wrap}
+.bar .s{flex:1;min-width:220px;position:relative}
+.bar .s input{width:100%;padding:13px 16px 13px 42px;border-radius:999px;border:1px solid var(--sand);background:#fff}
+.bar .s input:focus{outline:none;border-color:var(--gold-2);box-shadow:0 0 0 4px rgba(201,162,75,.18)}
+.bar .s svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);width:17px;height:17px;stroke:var(--gold);fill:none;stroke-width:2}
+.bar select{padding:13px 16px;border-radius:999px;border:1px solid var(--sand);background:#fff;cursor:pointer}
+.count{font-size:.88rem;color:var(--brown-2);margin-bottom:18px}
+.count b{color:var(--brown)}
+.chips{display:none;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:16px}
+.chips button{flex:none;padding:9px 16px;border-radius:999px;border:1px solid var(--sand);background:#fff;cursor:pointer;font-size:.86rem;white-space:nowrap}
+.chips button.on{background:var(--brown);color:#fff;border-color:var(--brown)}
+.pgrid{grid-template-columns:repeat(3,1fr)}
+.pgrid .prod{animation:cardIn .55s var(--ease) both}
+@keyframes cardIn{from{opacity:0;transform:translateY(24px) scale(.97)}}
+.none{grid-column:1/-1;text-align:center;padding:70px 20px;color:var(--brown-2)}
+.none b{display:block;font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--brown);margin-bottom:6px}
+@media(max-width:960px){
+  .shop{grid-template-columns:minmax(0,1fr)}
+  .side{display:none}
+  .chips{display:flex}
+  .pgrid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body data-page="products">
+
+<div class="page-hero">
+  <img src="assets/img/tableware-clean.webp" alt="" style="object-position:60% 55%">
+  <div class="wrap">
+    <div class="crumbs"><a href="index.html">Home</a> / <a href="supplies.html">Supplies &amp; Sourcing</a> / Products</div>
+    <h1>The Double 10 <em>product catalogue</em></h1>
+    <p>Buffetware, tableware, food packaging and pots &amp; pans for restaurants and hospitality. Add what you need to your quote and send us your requirement.</p>
+  </div>
+</div>
+
+<section style="padding-top:30px">
+  <div class="wrap shop">
+    <aside class="side">
+      <div><h4>Categories</h4><div class="catlist" id="catlist"></div></div>
+      <div><h4>Tableware material</h4><div class="mats" id="mats"></div></div>
+      <div class="help"><b>Need something custom?</b><p>Customisation and branding options are available on request, where possible.</p><a class="link-arrow" href="contact.html?type=supplies">Ask us</a></div>
+    </aside>
+    <div>
+      <div class="bar">
+        <div class="s"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="q" type="search" placeholder="Search by name, category, material or SKU…"></div>
+        <select id="sort"><option value="feat">Sort: Featured</option><option value="az">Name: A–Z</option><option value="za">Name: Z–A</option><option value="sku">SKU</option></select>
+      </div>
+      <div class="chips" id="chips"></div>
+      <div class="count" id="count2"></div>
+      <div class="pgrid" id="grid"></div>
+    </div>
+  </div>
+</section>
+
+<script src="assets/site.js"></script>
+<script>
+(function(){
+  var P = D10.products, params = new URLSearchParams(location.search);
+  var state = {cat: params.get('cat') || 'all', q: params.get('q') || '', mats: [], sort: 'feat'};
+  var mats = Array.from(new Set(P.map(function(p){ return p.mat; }).filter(Boolean)));
+  var cats = [{slug:'all', name:'All products'}].concat(D10.categories);
+  function n(slug){ return slug === 'all' ? P.length : P.filter(function(p){ return p.cat === slug; }).length; }
+
+  document.getElementById('catlist').innerHTML = cats.map(function(c){ return '<button data-cat="' + c.slug + '">' + c.name + '<span>' + n(c.slug) + '</span></button>'; }).join('');
+  document.getElementById('chips').innerHTML = cats.map(function(c){ return '<button data-cat="' + c.slug + '">' + c.name + '</button>'; }).join('');
+  document.getElementById('mats').innerHTML = mats.map(function(m){ return '<label><input type="checkbox" value="' + m + '">' + m + '</label>'; }).join('');
+  document.getElementById('q').value = state.q;
+
+  function render(){
+    document.querySelectorAll('[data-cat]').forEach(function(b){ b.classList.toggle('on', b.dataset.cat === state.cat); });
+    var q = state.q.trim().toLowerCase();
+    var list = P.filter(function(p){
+      if(state.cat !== 'all' && p.cat !== state.cat) return false;
+      if(state.mats.length && state.mats.indexOf(p.mat) < 0) return false;
+      if(q && (p.name + ' ' + p.sku + ' ' + p.mat + ' ' + D10.catBySlug(p.cat).name).toLowerCase().indexOf(q) < 0) return false;
+      return true;
+    });
+    if(state.sort === 'az') list.sort(function(a, b){ return a.name.localeCompare(b.name); });
+    if(state.sort === 'za') list.sort(function(a, b){ return b.name.localeCompare(a.name); });
+    if(state.sort === 'sku') list.sort(function(a, b){ return a.sku.localeCompare(b.sku); });
+    if(state.sort === 'feat') list.sort(function(a, b){ return (b.featured || 0) - (a.featured || 0); });
+    var label = state.cat === 'all' ? 'all categories' : D10.catBySlug(state.cat).name;
+    document.getElementById('count2').innerHTML = 'Showing <b>' + list.length + '</b> product' + (list.length === 1 ? '' : 's') + ' in ' + label + (q ? ' matching “' + state.q.replace(/</g, '&lt;') + '”' : '');
+    var g = document.getElementById('grid');
+    g.innerHTML = list.length ? list.map(D10.card).join('') : '<div class="none"><b>No products found</b>Try another search, or ask us. We source to order.</div>';
+    g.querySelectorAll('.prod').forEach(function(el, i){ el.style.animationDelay = (i * .05) + 's'; });
+    D10.renderCart();
+  }
+  document.addEventListener('click', function(e){
+    var b = e.target.closest('[data-cat]'); if(!b) return;
+    state.cat = b.dataset.cat; render();
+    history.replaceState(null, '', state.cat === 'all' ? 'products.html' : 'products.html?cat=' + state.cat);
+  });
+  document.getElementById('mats').addEventListener('change', function(){
+    state.mats = Array.from(this.querySelectorAll('input:checked')).map(function(i){ return i.value; }); render();
+  });
+  document.getElementById('q').addEventListener('input', function(){ state.q = this.value; render(); });
+  document.getElementById('sort').addEventListener('change', function(){ state.sort = this.value; render(); });
+
+  D10.pageHero();
+  D10.reveal();
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Consulting & Projects — Double 10 Ventures (Mockup)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.page-hero.consult>img{object-position:62% 24%}
+.page-hero.consult::before{background:linear-gradient(90deg,rgba(8,32,26,.95) 0%,rgba(8,32,26,.86) 34%,rgba(8,32,26,.45) 62%,rgba(8,32,26,.12) 100%),linear-gradient(0deg,rgba(8,32,26,.5),transparent 40%)}
+.page-hero.consult h1,.page-hero.consult p{text-shadow:0 2px 20px rgba(8,32,26,.6)}
+@media(max-width:700px){.page-hero.consult>img{object-position:70% 20%}.page-hero.consult::before{background:linear-gradient(180deg,rgba(8,32,26,.6),rgba(8,32,26,.86))}}
+.overview{display:grid;grid-template-columns:1.2fr .8fr;gap:56px;align-items:center}
+.overview h2{font-size:clamp(1.9rem,3.2vw,2.6rem);margin:10px 0 16px}
+.overview p{color:var(--brown-2);margin-bottom:16px}
+.bigstat{background:var(--brown);color:#fff;border-radius:26px;padding:44px 34px;text-align:center;position:relative;overflow:hidden}
+.bigstat::before{content:"";position:absolute;width:300px;height:300px;border-radius:50%;right:-90px;top:-110px;background:radial-gradient(circle,rgba(201,162,75,.4),transparent 70%)}
+.bigstat .yrs{font-family:'Playfair Display',serif;font-size:6.5rem;line-height:1;font-weight:700;background:linear-gradient(135deg,#F3DFA6,var(--gold-2),var(--amber));-webkit-background-clip:text;background-clip:text;color:transparent;position:relative}
+.bigstat small{display:block;letter-spacing:.22em;text-transform:uppercase;font-size:.74rem;color:#E8D9B5;margin:6px 0 18px;position:relative}
+.bigstat p{color:#D5E3DB;font-size:.93rem;position:relative}
+.note{margin-top:26px;text-align:center;color:var(--brown-2);font-size:.9rem}
+.formwrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:44px;align-items:start}
+.formwrap h2{font-size:clamp(1.8rem,3vw,2.4rem);margin:10px 0 14px}
+.formwrap>div:first-child p{color:var(--brown-2);margin-bottom:14px}
+.mini{display:grid;gap:12px;margin-top:22px}
+.mini div{display:flex;gap:12px;align-items:center;font-size:.92rem}
+.mini div::before{content:"";flex:none;width:20px;height:20px;border-radius:50%;background:var(--gold) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/12px no-repeat}
+@media(max-width:960px){.overview,.formwrap{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-page="consulting">
+
+<div class="page-hero consult">
+  <img src="assets/img/consulting.webp" alt="Double 10 consultants working through a kitchen process plan with a restaurant team">
+  <div class="wrap">
+    <h1>Hospitality consulting built on <em>real operating experience.</em></h1>
+    <p>From first concept to everyday kitchen performance.</p>
+  </div>
+</div>
+
+<section style="padding-top:50px">
+  <div class="wrap overview">
+    <div data-rv>
+      <div class="eyebrow">Overview</div>
+      <h2>Practical expertise, not generic business consulting</h2>
+      <p>Hands-on restaurant experience, applied to your concept, kitchen and team.</p>
+      <div class="row" style="display:flex;gap:14px;flex-wrap:wrap">
+        <a class="btn btn-gold" href="#enquire">Discuss Your Restaurant Project →</a>
+        <a class="btn btn-line" href="projects.html?f=consulting">See Our Engagements</a>
+      </div>
+    </div>
+    <div class="bigstat" data-rv>
+      <div class="yrs"><span data-count="29">29</span></div>
+      <small>Years of hospitality experience</small>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="services">
+  <div class="wrap">
+    <div class="head">
+      <div class="ghost">Services</div>
+      <div class="eyebrow">Services offered</div>
+      <h2>Areas of expertise</h2>
+    </div>
+    <div class="svc10" id="svc10"></div>
+  </div>
+</section>
+
+<section id="enquire">
+  <div class="wrap formwrap">
+    <div data-rv>
+      <div class="eyebrow">Consulting enquiry</div>
+      <h2>Discuss Your Restaurant Project</h2>
+      <p>Tell us where you are, and we'll take it from there.</p>
+    </div>
+    <div class="panel" data-rv id="formBox">
+      <form id="form">
+        <div class="row2"><div class="field"><label>Your name *</label><input required></div><div class="field"><label>Restaurant / business name</label><input></div></div>
+        <div class="row2"><div class="field"><label>Email *</label><input type="email" required></div><div class="field"><label>Phone / WhatsApp</label><input type="tel"></div></div>
+        <div class="row2">
+          <div class="field"><label>Where are you in the project?</label><select><option>Idea / concept stage</option><option>Pre-opening</option><option>Currently operating</option><option>Expanding to new formats</option><option>Something else</option></select></div>
+          <div class="field"><label>Country</label><input value="India"></div>
+        </div>
+        <div class="field"><label>About your project *</label><textarea required placeholder="What would you like help with?"></textarea></div>
+        <button class="btn btn-gold" type="submit">Send Consulting Enquiry →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script src="assets/site.js"></script>
+<script>
+  var services = [
+    ['Restaurant concept development and format planning','Shaping the concept, positioning and format before you commit to a build.'],
+    ['Pre-opening planning and execution support','Planning and hands-on support to get a restaurant open well.'],
+    ['Menu development, menu engineering and product innovation','Menus that are distinctive, workable in the kitchen and profitable.'],
+    ['Recipe standardisation and kitchen systems','Consistent dishes and repeatable systems across shifts and outlets.'],
+    ['SOPs, operating manuals and process improvement','Clear procedures and manuals that teams can actually follow.'],
+    ['Food cost control, portion control and profitability improvement','Practical control over cost, portions and margin.'],
+    ['Base kitchen planning and production systems','Planning central production to support multiple outlets or formats.'],
+    ['Procurement processes and vendor coordination','Better buying processes and dependable vendor relationships.'],
+    ['Team development, training and operational structures','Building capable teams and the structures that support them.'],
+    ['Ongoing advisory and operational performance improvement','Continued guidance to keep performance improving after launch.']
+  ];
+  document.getElementById('svc10').innerHTML = services.map(function(s, i){
+    return '<div class="s"><b class="n">' + (i < 9 ? '0' : '') + (i + 1) + '</b><div><h3>' + s[0] + '</h3></div></div>';
+  }).join('');
+  D10.pageHero(); D10.reveal(); D10.countUp();
+  document.getElementById('form').addEventListener('submit', function(e){
+    e.preventDefault();
+    document.getElementById('formBox').innerHTML = '<div class="success"><div class="tick"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg></div><h2>Thank you!</h2><p class="muted">Your consulting enquiry has been sent. We\'ll be in touch shortly.</p><p class="muted" style="font-size:.85rem;margin-top:10px">(Mockup only: nothing was actually sent.)</p></div>';
+  });
+</script>
+</body>
+</html>
