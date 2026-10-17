@@ -86,8 +86,8 @@
 
   var bag = '<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>';
   D10.card = function(p){
-    return '<a class="prod" href="product.html?sku=' + p.sku + '"><img loading="lazy" src="' + U(p.img) + '" alt="' + p.name + '"><span class="sku">' + p.sku + '</span>' +
-      '<div class="ov"><h3>' + p.name + '</h3><span>' + D10.catBySlug(p.cat).name + (p.mat ? ' · ' + p.mat : '') + '</span>' +
+    return '<a class="prod" href="product.html?sku=' + p.sku + '"><span class="pimg"><img loading="lazy" src="' + U(p.img) + '" alt="' + p.name + '"><span class="sku">' + p.sku + '</span></span>' +
+      '<div class="pb"><h3>' + p.name + '</h3><span>' + D10.catBySlug(p.cat).name + (p.mat ? ' · ' + p.mat : '') + '</span>' +
       '<button class="add" data-sku="' + p.sku + '">' + bag + 'Add to Quote</button></div></a>';
   };
 

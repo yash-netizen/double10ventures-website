@@ -155,20 +155,21 @@ section{padding:92px 0}
 
 /* product cards */
 .pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
-.prod{position:relative;display:block;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/5;background:#e9e2d3;box-shadow:0 4px 14px rgba(18,52,42,.08);transition:transform .4s var(--ease),box-shadow .4s}
+/* product card: photo on top, name and Add to Quote always visible, the same on desktop and touch screens */
+.prod{position:relative;display:flex;flex-direction:column;border-radius:var(--radius);overflow:hidden;background:#fff;border:1px solid var(--sand);box-shadow:0 4px 14px rgba(18,52,42,.06);transition:transform .4s var(--ease),box-shadow .4s,border-color .4s}
+.prod .pimg{position:relative;display:block;aspect-ratio:1;overflow:hidden;background:#fff}
 .prod img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
-.prod .sku{position:absolute;left:12px;top:12px;z-index:3;background:rgba(255,253,248,.95);border-radius:6px;padding:3px 9px;font-size:.7rem;font-weight:600;letter-spacing:.05em}
-.prod .ov{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding:20px;background:linear-gradient(180deg,transparent 30%,rgba(8,32,26,.88));opacity:0;transition:opacity .45s}
-.prod .ov h3{color:#fff;font-size:1.25rem;transform:translateY(16px);transition:transform .5s var(--ease)}
-.prod .ov span{color:#F3E7C9;font-size:.82rem;transform:translateY(16px);transition:transform .5s .05s var(--ease)}
-.prod .add{margin-top:14px;padding:11px;border-radius:999px;border:none;background:linear-gradient(135deg,var(--gold-2),var(--gold));color:#fff;font-weight:600;font-size:.88rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transform:translateY(20px);opacity:0;transition:transform .5s .1s var(--ease),opacity .5s .1s,background .25s}
+.prod .sku{position:absolute;left:12px;top:12px;z-index:3;background:rgba(255,253,248,.95);border:1px solid var(--sand);border-radius:6px;padding:3px 9px;font-size:.7rem;font-weight:600;letter-spacing:.05em}
+.prod .pb{display:flex;flex-direction:column;flex:1;padding:16px 18px 18px;border-top:1px solid var(--sand)}
+.prod .pb h3{font-size:1.08rem;line-height:1.25;color:var(--brown);transition:color .3s}
+.prod .pb span{font-size:.8rem;color:var(--brown-2);margin:4px 0 14px}
+.prod .add{margin-top:auto;padding:10px;border-radius:999px;border:1.5px solid var(--gold-2);background:#fff;color:var(--gold);font-weight:600;font-size:.86rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .25s,color .25s,border-color .25s}
 .prod .add svg,.add-big svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
-.prod .add:hover{background:linear-gradient(135deg,var(--amber),var(--gold))}
-.prod .add.done{background:#fff;color:var(--gold)}
-.prod:hover{transform:translateY(-8px);box-shadow:0 24px 44px rgba(18,52,42,.22)}
-.prod:hover img{transform:scale(1.1)}
-.prod:hover .ov{opacity:1}
-.prod:hover .ov h3,.prod:hover .ov span,.prod:hover .add{transform:none;opacity:1}
+.prod .add:hover{background:linear-gradient(135deg,var(--gold-2),var(--gold));border-color:var(--gold);color:#fff}
+.prod .add.done{background:var(--cream-2);border-color:var(--sand);color:var(--brown)}
+.prod:hover{transform:translateY(-6px);box-shadow:0 22px 40px rgba(18,52,42,.16);border-color:var(--gold-2)}
+.prod:hover img{transform:scale(1.06)}
+.prod:hover .pb h3{color:var(--gold)}
 
 /* steps */
 .steps .grid3{position:relative}
@@ -296,7 +297,6 @@ body.ready .in-a{animation:rise .9s var(--ease) forwards}
 /* touch: no hover, keep names visible */
 @media (hover:none){
   .cat::after{opacity:1}.cat .lbl{transform:none}
-  .prod .ov{opacity:1}.prod .ov h3,.prod .ov span,.prod .add{transform:none;opacity:1}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -327,7 +327,8 @@ body.ready .in-a{animation:rise .9s var(--ease) forwards}
   .cat:first-child{grid-column:auto}
   .pts,.row2{grid-template-columns:1fr}
   .pgrid{gap:12px}
-  .prod .ov{padding:12px}.prod .ov h3{font-size:1rem}
+  .prod .pb{padding:12px 12px 14px}.prod .pb h3{font-size:.95rem}.prod .pb span{font-size:.74rem}
+  .prod .add{font-size:.8rem;padding:9px 6px;gap:6px}.prod .sku{left:8px;top:8px;font-size:.62rem}
   section{padding:64px 0}
   .stamp{left:0}
   .page-hero{padding:80px 0 100px}
