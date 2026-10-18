@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Products — Double 10 Ventures Admin</title>
+<link rel="icon" href="../assets/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#FFFDF8;--cream-2:#F7F0E1;--sand:#E9DCC3;--gold:#B8860B;--gold-2:#C9A24B;--brown:#12342A;--brown-2:#52665D;--red:#B3261E;--green:#1E7B4A}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;background:var(--cream-2);color:var(--brown);line-height:1.5;font-size:15px}
+h1,h2{font-family:'Playfair Display',Georgia,serif;font-weight:600}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:inherit}
+.top{background:var(--brown);color:#fff;padding:14px 20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.top img{width:38px;height:38px;border-radius:8px;object-fit:cover}
+.top h1{font-size:1.15rem;margin-right:auto}
+.top small{opacity:.75}
+.top a{font-size:.85rem;opacity:.85}
+.wrap{max-width:1150px;margin:0 auto;padding:22px 16px 60px}
+.btn{display:inline-flex;align-items:center;gap:6px;border:1.5px solid transparent;border-radius:999px;padding:10px 20px;font-weight:600;cursor:pointer;background:var(--gold);color:#fff;font-size:.92rem}
+.btn:hover{background:#9c7209}
+.btn.line{background:#fff;color:var(--brown);border-color:var(--sand)}
+.btn.line:hover{border-color:var(--gold)}
+.btn.danger{background:#fff;color:var(--red);border-color:#e7c3c0}
+.btn.danger:hover{background:var(--red);color:#fff}
+.btn:disabled{opacity:.55;cursor:wait}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
+.stat{background:#fff;border-radius:12px;padding:14px 16px}
+.stat b{display:block;font-size:1.5rem;font-family:'Playfair Display',serif}
+.stat span{font-size:.8rem;color:var(--brown-2)}
+.bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.bar input,.bar select{background:#fff;border:1.5px solid var(--sand);border-radius:999px;padding:10px 16px;min-width:0}
+.bar input{flex:1 1 220px}
+.bar .btn{margin-left:auto}
+.list{background:#fff;border-radius:14px;overflow:hidden}
+.row{display:grid;grid-template-columns:64px 1fr 150px 110px 40px;gap:14px;align-items:center;padding:10px 16px;border-top:1px solid var(--cream-2);cursor:pointer}
+.row:first-child{border-top:0}
+.row:hover{background:var(--cream)}
+.row img,.row .noimg{width:64px;height:64px;border-radius:10px;object-fit:cover;background:var(--cream-2)}
+.row b{display:block}
+.row small{color:var(--brown-2);font-size:.8rem}
+.tag{display:inline-block;font-size:.75rem;font-weight:600;border-radius:999px;padding:3px 10px}
+.tag.live{background:#E3F2E9;color:var(--green)}
+.tag.hid{background:#F1ECE2;color:var(--brown-2)}
+.star{color:var(--gold);font-size:1.1rem;text-align:center}
+.empty{padding:40px;text-align:center;color:var(--brown-2)}
+/* edit panel */
+.scrim{position:fixed;inset:0;background:rgba(8,32,26,.45);opacity:0;pointer-events:none;transition:opacity .2s}
+.panel{position:fixed;top:0;right:0;bottom:0;width:min(560px,100%);background:var(--cream);transform:translateX(100%);transition:transform .25s;display:flex;flex-direction:column;box-shadow:-10px 0 40px rgba(0,0,0,.15)}
+body.editing .scrim{opacity:1;pointer-events:auto}
+body.editing .panel{transform:none}
+.ph{display:flex;align-items:center;gap:10px;padding:16px 20px;border-bottom:1px solid var(--sand)}
+.ph h2{font-size:1.2rem;margin-right:auto}
+.ph .x{border:0;background:none;font-size:1.6rem;cursor:pointer;line-height:1}
+form{flex:1;overflow:auto;padding:18px 20px;display:grid;gap:14px}
+label{display:grid;gap:5px;font-size:.85rem;font-weight:600}
+label em{font-weight:400;font-style:normal;color:var(--brown-2)}
+form input[type=text],form select,form textarea{background:#fff;border:1.5px solid var(--sand);border-radius:10px;padding:10px 12px;font-weight:400;width:100%}
+form input:focus,form select:focus,form textarea:focus{outline:none;border-color:var(--gold)}
+textarea{resize:vertical;min-height:110px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.photo{display:grid;grid-template-columns:130px 1fr;gap:14px;align-items:center}
+.photo .pv{width:130px;height:130px;border-radius:12px;background:#fff center/cover no-repeat;border:1.5px dashed var(--sand);display:grid;place-items:center;color:var(--brown-2);font-size:.8rem;text-align:center}
+.drop{border:1.5px dashed var(--gold-2);border-radius:12px;padding:16px;text-align:center;font-size:.85rem;color:var(--brown-2);cursor:pointer;background:#fff}
+.drop.over{background:#FFF6DF}
+.checks{display:flex;gap:22px;flex-wrap:wrap}
+.checks label{display:flex;gap:8px;align-items:center;font-weight:500}
+.checks input{width:18px;height:18px;accent-color:var(--gold)}
+.pf{display:flex;gap:10px;padding:14px 20px;border-top:1px solid var(--sand);background:#fff}
+.pf .danger{margin-right:auto}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,120px);background:var(--brown);color:#fff;padding:12px 20px;border-radius:999px;font-size:.9rem;transition:transform .25s;z-index:5}
+.toast.on{transform:translate(-50%,0)}
+.toast.err{background:var(--red)}
+.note{font-size:.8rem;color:var(--brown-2)}
+@media (max-width:760px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .row{grid-template-columns:56px 1fr auto;gap:10px;padding:10px 12px}
+  .row img,.row .noimg{width:56px;height:56px}
+  .row .c-cat,.row .star{display:none}
+  .bar .btn{margin-left:0;width:100%;justify-content:center}
+  .two,.photo{grid-template-columns:1fr}
+  .photo .pv{width:100%;height:200px}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <img src="../assets/logo.jpg" alt="">
+  <h1>Product Manager</h1>
+  <small id="who"></small>
+  <a href="../products.html" target="_blank" rel="noopener">View website ↗</a>
+  <a href="/cdn-cgi/access/logout">Sign out</a>
+</header>
+
+<main class="wrap">
+  <div class="stats" id="stats"></div>
+  <div class="bar">
+    <input type="search" id="q" placeholder="Search by name, SKU or material" aria-label="Search products">
+    <select id="fcat" aria-label="Category"></select>
+    <select id="fstat" aria-label="Status"><option value="">All statuses</option><option value="live">Live on site</option><option value="hidden">Hidden</option></select>
+    <button class="btn" id="add">+ Add product</button>
+  </div>
+  <div class="list" id="list"><div class="empty">Loading products…</div></div>
+  <p class="note" style="margin-top:12px">Changes appear on the website within about a minute.</p>
+</main>
+
+<div class="scrim" id="scrim"></div>
+<aside class="panel" aria-label="Edit product">
+  <div class="ph"><h2 id="ptitle">Edit product</h2><button class="x" id="close" aria-label="Close">×</button></div>
+  <form id="form" autocomplete="off">
+    <div class="photo">
+      <div class="pv" id="pv">No photo</div>
+      <div>
+        <div class="drop" id="drop">Drop a photo here or <u>choose a file</u><br><small>JPG, PNG or WebP. It's resized automatically.</small></div>
+        <input type="file" id="file" accept="image/jpeg,image/png,image/webp" hidden>
+        <p class="note" id="upst" style="margin-top:6px"></p>
+      </div>
+    </div>
+    <label>Product name<input type="text" name="name" required></label>
+    <div class="two">
+      <label>Category<select name="cat" id="cat"></select></label>
+      <label>Material <em>(optional)</em><input type="text" name="mat" placeholder="e.g. Brass"></label>
+    </div>
+    <label>Description<textarea name="description" placeholder="What it is, what it's used for, who it suits"></textarea></label>
+    <label>Finish <em>(optional)</em><input type="text" name="finish"></label>
+    <label>Sizes <em>(optional)</em><input type="text" name="size"></label>
+    <label>Variants <em>(optional)</em><input type="text" name="variants"></label>
+    <div class="checks">
+      <label><input type="checkbox" name="featured"> Featured on home page</label>
+      <label><input type="checkbox" name="hidden"> Hide from website</label>
+    </div>
+    <input type="hidden" name="img">
+    <p class="note" id="skunote"></p>
+  </form>
+  <div class="pf">
+    <button class="btn danger" id="del" type="button">Delete</button>
+    <button class="btn line" id="cancel" type="button">Cancel</button>
+    <button class="btn" id="save" type="submit" form="form">Save</button>
+  </div>
+</aside>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  var CATS = {buffetware:'Buffetware', tableware:'Tableware', packaging:'Food Packaging', potspans:'Pots & Pans'};
+  var all = [], editing = null;
+  var $ = function(id){ return document.getElementById(id); };
+  var form = $('form');
+  var F = function(k){ return form.elements[k]; };
+  var esc = function(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+  // product photos are stored as site-relative paths (assets/…, media/…) or Unsplash ids
+  var src = function(img, w){ return !img ? '' : img.indexOf('/') >= 0 ? '/' + img : 'https://unsplash.com/photos/' + img + '/download?w=' + (w || 300); };
+
+  function toast(msg, err){
+    var t = $('toast'); t.textContent = msg; t.className = 'toast on' + (err ? ' err' : '');
+    clearTimeout(toast.t); toast.t = setTimeout(function(){ t.className = 'toast'; }, 3200);
+  }
+  function api(method, path, body, type){
+    return fetch('/api/admin/' + path, {method: method, credentials: 'same-origin',
+      headers: body ? {'content-type': type || 'application/json'} : {},
+      body: body && !type ? JSON.stringify(body) : body
+    }).then(function(r){
+      return r.json().catch(function(){ return {}; }).then(function(d){
+        if(r.status === 401){ location.reload(); }
+        if(!r.ok) throw new Error(d.error || 'Something went wrong (' + r.status + ').');
+        return d;
+      });
+    });
+  }
+
+  var opts = Object.keys(CATS).map(function(k){ return '<option value="' + k + '">' + CATS[k] + '</option>'; }).join('');
+  $('cat').innerHTML = opts;
+  $('fcat').innerHTML = '<option value="">All categories</option>' + opts;
+
+  function load(){
+    return api('GET', 'products').then(function(d){
+      all = d.products; $('who').textContent = d.user ? 'Signed in as ' + d.user : '';
+      render();
+    }).catch(function(e){ $('list').innerHTML = '<div class="empty">' + esc(e.message) + '</div>'; });
+  }
+
+  function render(){
+    var q = $('q').value.trim().toLowerCase(), c = $('fcat').value, s = $('fstat').value;
+    var live = all.filter(function(p){ return !p.hidden; }).length;
+    $('stats').innerHTML = [[all.length, 'Total products'], [live, 'Live on website'], [all.length - live, 'Hidden'], [all.filter(function(p){ return p.featured; }).length, 'Featured']]
+      .map(function(x){ return '<div class="stat"><b>' + x[0] + '</b><span>' + x[1] + '</span></div>'; }).join('');
+    var list = all.filter(function(p){
+      if(c && p.cat !== c) return false;
+      if(s === 'live' && p.hidden) return false;
+      if(s === 'hidden' && !p.hidden) return false;
+      return !q || (p.name + ' ' + p.sku + ' ' + p.mat).toLowerCase().indexOf(q) >= 0;
+    });
+    $('list').innerHTML = list.length ? list.map(function(p){
+      return '<div class="row" data-sku="' + esc(p.sku) + '" tabindex="0">' +
+        (p.img ? '<img loading="lazy" src="' + esc(src(p.img)) + '" alt="">' : '<span class="noimg"></span>') +
+        '<div><b>' + esc(p.name) + '</b><small>' + esc(p.sku) + (p.mat ? ' · ' + esc(p.mat) : '') + '</small></div>' +
+        '<small class="c-cat">' + CATS[p.cat] + '</small>' +
+        '<span><span class="tag ' + (p.hidden ? 'hid">Hidden' : 'live">Live') + '</span></span>' +
+        '<span class="star" title="Featured">' + (p.featured ? '★' : '') + '</span></div>';
+    }).join('') : '<div class="empty">' + (all.length ? 'No products match.' : 'No products yet. Add your first one.') + '</div>';
+  }
+  ['q', 'fcat', 'fstat'].forEach(function(id){ $(id).addEventListener('input', render); });
+
+  function setPhoto(img){
+    F('img').value = img || '';
+    var pv = $('pv');
+    pv.style.backgroundImage = img ? 'url("' + src(img, 400) + '")' : '';
+    pv.textContent = img ? '' : 'No photo';
+  }
+
+  function open(p){
+    editing = p;
+    form.reset();
+    $('ptitle').textContent = p ? 'Edit product' : 'Add product';
+    $('del').style.visibility = p ? 'visible' : 'hidden';
+    $('skunote').textContent = p ? 'SKU ' + p.sku + ' · last updated ' + p.updated_at + ' UTC' : 'A SKU is created automatically when you save.';
+    $('upst').textContent = '';
+    ['name', 'cat', 'mat', 'description', 'finish', 'size', 'variants'].forEach(function(k){ F(k).value = p ? p[k] || '' : ''; });
+    if(!p) F('cat').value = $('fcat').value || 'buffetware';
+    F('featured').checked = !!(p && p.featured);
+    F('hidden').checked = !!(p && p.hidden);
+    setPhoto(p && p.img);
+    document.body.classList.add('editing');
+    setTimeout(function(){ F('name').focus(); }, 250);
+  }
+  function close(){ document.body.classList.remove('editing'); editing = null; }
+
+  $('add').onclick = function(){ open(null); };
+  $('list').addEventListener('click', function(e){
+    var r = e.target.closest('.row'); if(!r) return;
+    open(all.find(function(p){ return p.sku === r.dataset.sku; }));
+  });
+  $('list').addEventListener('keydown', function(e){ if(e.key === 'Enter' && e.target.classList.contains('row')) e.target.click(); });
+  $('close').onclick = $('cancel').onclick = $('scrim').onclick = close;
+  addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var body = {};
+    ['name', 'cat', 'mat', 'img', 'description', 'finish', 'size', 'variants'].forEach(function(k){ body[k] = F(k).value; });
+    body.featured = F('featured').checked; body.hidden = F('hidden').checked;
+    $('save').disabled = true;
+    (editing ? api('PUT', 'products/' + encodeURIComponent(editing.sku), body) : api('POST', 'products', body))
+      .then(function(d){ toast((editing ? 'Saved ' : 'Added ') + d.sku); close(); return load(); })
+      .catch(function(err){ toast(err.message, true); })
+      .then(function(){ $('save').disabled = false; });
+  });
+
+  $('del').onclick = function(){
+    if(!editing || !confirm('Delete "' + editing.name + '" (' + editing.sku + ')? This cannot be undone.\n\nTo take it off the website but keep it here, tick "Hide from website" instead.')) return;
+    var sku = editing.sku;
+    api('DELETE', 'products/' + encodeURIComponent(sku)).then(function(){ toast('Deleted ' + sku); close(); return load(); })
+      .catch(function(err){ toast(err.message, true); });
+  };
+
+  // Photos are shrunk in the browser (longest side 1600px) and saved as WebP, or JPEG where WebP isn't available.
+  function shrink(file){
+    return createImageBitmap(file).then(function(bmp){
+      var k = Math.min(1, 1600 / Math.max(bmp.width, bmp.height));
+      var cv = document.createElement('canvas'); cv.width = Math.round(bmp.width * k); cv.height = Math.round(bmp.height * k);
+      cv.getContext('2d').drawImage(bmp, 0, 0, cv.width, cv.height);
+      return new Promise(function(ok){ cv.toBlob(function(b){
+        if(b && b.type === 'image/webp') return ok(b);
+        cv.toBlob(ok, 'image/jpeg', .85);
+      }, 'image/webp', .85); });
+    });
+  }
+  function upload(file){
+    if(!file || !/^image\/(jpeg|png|webp)$/.test(file.type)){ toast('Please choose a JPG, PNG or WebP image.', true); return; }
+    $('upst').textContent = 'Uploading…'; $('save').disabled = true;
+    shrink(file).then(function(b){ return api('POST', 'upload', b, b.type); })
+      .then(function(d){ setPhoto(d.img); $('upst').textContent = 'Photo uploaded. Click Save to keep it.'; })
+      .catch(function(err){ $('upst').textContent = ''; toast(err.message, true); })
+      .then(function(){ $('save').disabled = false; });
+  }
+  var drop = $('drop');
+  drop.onclick = function(){ $('file').click(); };
+  $('file').onchange = function(){ upload(this.files[0]); this.value = ''; };
+  ['dragenter', 'dragover'].forEach(function(t){ drop.addEventListener(t, function(e){ e.preventDefault(); drop.classList.add('over'); }); });
+  ['dragleave', 'drop'].forEach(function(t){ drop.addEventListener(t, function(e){ e.preventDefault(); drop.classList.remove('over'); }); });
+  drop.addEventListener('drop', function(e){ upload(e.dataTransfer.files[0]); });
+
+  load();
+})();
+</script>
+</body>
+</html>

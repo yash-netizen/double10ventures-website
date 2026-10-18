@@ -7,7 +7,7 @@
 <title>Request a Quote — Double 10 Ventures (Mockup)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap">
-<link rel="stylesheet" href="assets/site.css?v=6">
+<link rel="stylesheet" href="assets/site.css?v=12">
 <style>
 .qhead{padding:46px 0 10px}
 .qhead h1{font-size:clamp(2rem,4vw,3rem);margin:8px 0 8px}
@@ -63,7 +63,8 @@
   </div>
 </div>
 
-<script src="assets/site.js?v=6"></script>
+<script src="assets/catalogue.js"></script>
+<script src="assets/site.js?v=10"></script>
 <script>
 (function(){
   var U = D10.img, cart = D10.cart;
@@ -78,7 +79,7 @@
     }
     document.getElementById('lines').innerHTML = keys.map(function(k, i){
       var p = D10.bySku(k);
-      return '<div class="line" style="animation-delay:' + (i * .06) + 's"><img src="' + U(p.img, 240) + '" alt=""><div><b>' + p.name + '</b><small>' + p.sku + (p.mat ? ' · ' + p.mat : '') + '</small></div>' +
+      return '<div class="line" style="animation-delay:' + (i * .06) + 's"><img src="' + D10.esc(U(p.img, 240)) + '" alt=""><div><b>' + D10.esc(p.name) + '</b><small>' + D10.esc(p.sku) + (p.mat ? ' · ' + D10.esc(p.mat) : '') + '</small></div>' +
         '<div class="qty"><button data-k="' + k + '" data-q="-1">−</button><span>' + cart[k] + '</span><button data-k="' + k + '" data-q="1">+</button></div>' +
         '<button class="rm" data-rm="' + k + '" aria-label="Remove">×</button></div>';
     }).join('');
@@ -98,7 +99,7 @@
     e.preventDefault();
     sent = true;
     var ref = 'Q-2026-' + String(Math.floor(1000 + Math.random() * 9000));
-    var items = Object.keys(cart).map(function(k){ return '<li>' + k + ' · ' + D10.bySku(k).name + ' × ' + cart[k] + '</li>'; }).join('');
+    var items = Object.keys(cart).map(function(k){ return '<li>' + D10.esc(k) + ' · ' + D10.esc(D10.bySku(k).name) + ' × ' + cart[k] + '</li>'; }).join('');
     document.getElementById('s3').classList.add('on');
     document.getElementById('qgrid').innerHTML = '<div class="panel" style="grid-column:1/-1"><div class="success"><div class="tick"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg></div>' +
       '<h2>Quote request received</h2><p class="muted">Thank you. Our team will get back to you with details for your requirement.</p><div class="ref">Reference ' + ref + '</div>' +

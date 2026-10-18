@@ -1,0 +1,13 @@
+{
+  "name": "double10ventures-website",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler pages dev",
+    "db:seed:local": "wrangler d1 execute d10-catalogue --local --file=db/schema.sql && wrangler d1 execute d10-catalogue --local --file=db/seed.sql",
+    "db:seed:remote": "wrangler d1 execute d10-catalogue --remote --file=db/schema.sql && wrangler d1 execute d10-catalogue --remote --file=db/seed.sql",
+    "deploy": "wrangler pages deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.151.1"
+  }
+}

@@ -7,7 +7,7 @@
 <title>Consulting & Projects — Double 10 Ventures (Mockup)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap">
-<link rel="stylesheet" href="assets/site.css?v=6">
+<link rel="stylesheet" href="assets/site.css?v=12">
 <style>
 .page-hero.consult>img{object-position:62% 24%}
 .page-hero.consult::before{background:linear-gradient(90deg,rgba(8,32,26,.95) 0%,rgba(8,32,26,.86) 34%,rgba(8,32,26,.45) 62%,rgba(8,32,26,.12) 100%),linear-gradient(0deg,rgba(8,32,26,.5),transparent 40%)}
@@ -28,7 +28,58 @@
 .mini{display:grid;gap:12px;margin-top:22px}
 .mini div{display:flex;gap:12px;align-items:center;font-size:.92rem}
 .mini div::before{content:"";flex:none;width:20px;height:20px;border-radius:50%;background:var(--gold) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/12px no-repeat}
-@media(max-width:960px){.overview,.formwrap{grid-template-columns:1fr}}
+/* the enquiry section shares the footer's background, so the footer's usual top gap would show as an empty strip */
+#enquire ~ footer.site{margin-top:0}
+/* areas of expertise: 3 across, 2 on tablets, 1 on phones (icon beside the title) */
+.svc{gap:22px}
+.svc .card{padding:30px 28px}
+.svc .card h3{font-size:1.25rem}
+@media(max-width:960px){.svc{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.svc{grid-template-columns:1fr;gap:14px}.svc .card{display:grid;grid-template-columns:48px 1fr;column-gap:16px;padding:22px}.svc .ico{grid-row:span 2;width:48px;height:48px;margin:0}.svc .card h3{font-size:1.15rem;margin:2px 0 4px}}
+/* featured engagement (case study) */
+.case{display:grid;grid-template-columns:.85fr 1.15fr;background:#fff;border:1px solid var(--sand);border-radius:26px;overflow:hidden;box-shadow:0 26px 50px rgba(18,52,42,.08)}
+.case-gallery{grid-column:1/-1;display:grid;grid-template-columns:1.5fr 1fr;grid-template-rows:repeat(2,clamp(150px,20vw,240px));gap:4px}
+.case-gallery figure{position:relative;margin:0;overflow:hidden;background:var(--brown)}
+.case-gallery figure:first-child{grid-row:span 2}
+.case-gallery a{display:block;height:100%;cursor:zoom-in}
+.case-gallery img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.case-gallery figure:nth-child(2) img{object-position:50% 62%}
+.case-gallery figure:hover img{transform:scale(1.05)}
+.case-gallery figcaption{position:absolute;left:0;right:0;bottom:0;padding:36px 18px 14px;background:linear-gradient(0deg,rgba(8,32,26,.8),transparent);color:#F3E7C9;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;pointer-events:none}
+.lb{border:0;padding:0;background:transparent;max-width:min(1400px,94vw);max-height:94vh;margin:auto;overflow:visible}
+.lb::backdrop{background:rgba(8,32,26,.9)}
+.lb img{display:block;max-width:100%;max-height:84vh;margin:0 auto;border-radius:14px}
+.lb p{margin-top:12px;text-align:center;color:#F3E7C9;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600}
+.lb .x{position:fixed;top:16px;right:18px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;font-size:1.6rem;line-height:1;cursor:pointer}
+.lb .x:hover{background:var(--gold)}
+.case-id{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(160deg,var(--brown),#1d5a47);color:#fff;padding:46px 40px;display:flex;flex-direction:column;gap:22px}
+.case-id::before{content:"";position:absolute;inset:14px;border:1px solid rgba(201,162,75,.4);border-radius:18px;pointer-events:none}
+.case-id::after{content:"";position:absolute;z-index:-1;width:320px;height:320px;border-radius:50%;right:-120px;top:-120px;background:radial-gradient(circle,rgba(201,162,75,.35),transparent 70%)}
+.case-id .eyebrow{color:var(--gold-2)}
+.case-id h3{font-size:clamp(2.3rem,4vw,3.1rem);letter-spacing:.1em;text-transform:uppercase;line-height:1;margin-top:-8px;background:linear-gradient(135deg,#F3DFA6,var(--gold-2),var(--amber));-webkit-background-clip:text;background-clip:text;color:transparent}
+.case-loc{display:flex;gap:8px;align-items:flex-start;font-size:.92rem;color:#D5E3DB}
+.case-loc svg{flex:none;width:16px;height:16px;margin-top:3px;stroke:var(--gold-2);fill:none;stroke-width:2}
+.case-marks{list-style:none;display:grid;gap:12px;margin:auto 0}
+.case-marks li{display:flex;align-items:center;gap:14px;font-family:'Playfair Display',serif;font-style:italic;font-size:1.25rem;color:#F3E7C9}
+.case-marks li::before{content:"";flex:none;width:8px;height:8px;background:linear-gradient(135deg,var(--gold-2),var(--gold));transform:rotate(45deg)}
+.case-facts{display:grid;gap:16px;padding-top:22px;border-top:1px solid rgba(201,162,75,.3)}
+.case-facts dt{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-2);font-weight:600}
+.case-facts dd{font-size:.95rem;color:#F3EEE2;margin-top:3px}
+.route{display:flex;align-items:center;gap:10px}
+.route i{flex:1;max-width:110px;height:0;border-top:1.5px dashed var(--gold-2);position:relative}
+.route i::after{content:"";position:absolute;right:-1px;top:-5px;width:8px;height:8px;border-top:1.5px solid var(--gold-2);border-right:1.5px solid var(--gold-2);transform:rotate(45deg)}
+.case-body{padding:46px 46px 42px}
+.case-body .lead{font-family:'Playfair Display',serif;font-size:1.22rem;line-height:1.55;color:var(--brown);margin-bottom:30px}
+.case-parts{display:grid;gap:24px}
+.case-part{display:grid;grid-template-columns:44px 1fr;gap:16px}
+.case-part .num{width:44px;height:44px;border-radius:50%;border:1px solid var(--gold-2);display:grid;place-items:center;font-family:'Playfair Display',serif;font-size:1rem;color:var(--gold)}
+.case-part h4{font-size:1.15rem;margin:8px 0 6px}
+.case-part p{color:var(--brown-2);font-size:.95rem}
+.case-take{margin-top:30px;padding:20px 22px;background:var(--cream-2);border-left:3px solid var(--gold);border-radius:0 12px 12px 0;font-size:.95rem}
+.case-take b{display:block;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.case-cta{margin-top:26px;display:flex;gap:26px;flex-wrap:wrap}
+@media(max-width:960px){.overview,.formwrap,.case{grid-template-columns:1fr}}
+@media(max-width:700px){.case-gallery{grid-template-columns:1fr 1fr;grid-template-rows:none}.case-gallery figure{aspect-ratio:4/3}.case-gallery figure:first-child{grid-row:auto;grid-column:1/-1;aspect-ratio:3/2}.case-gallery figcaption{padding:28px 12px 10px;font-size:.62rem;letter-spacing:.14em}.case-id{padding:36px 30px}.case-body{padding:30px 22px 28px}.case-body .lead{font-size:1.1rem}.case-part{grid-template-columns:38px 1fr;gap:14px}.case-part .num{width:38px;height:38px;font-size:.9rem}.case-part h4{margin-top:5px}}
 </style>
 </head>
 <body data-page="consulting">
@@ -66,11 +117,70 @@
       <div class="eyebrow">Services offered</div>
       <h2>Areas of expertise</h2>
     </div>
-    <div class="svc10" id="svc10"></div>
+    <div class="grid3 svc" id="svc"></div>
   </div>
 </section>
 
-<section id="enquire">
+<section id="bhaijaan">
+  <div class="wrap">
+    <div class="head">
+      <div class="ghost">Case study</div>
+      <div class="eyebrow">Featured engagement</div>
+      <h2>Bhaijaan, New York</h2>
+      <p>Hospitality consulting, and tableware sourced from India, for a premium Indian restaurant on Long Island.</p>
+    </div>
+    <article class="case" data-rv>
+      <div class="case-gallery">
+        <figure><a href="assets/img/projects/bhaijaan-brand-1800.webp" data-cap="Brand &amp; ambience"><img src="assets/img/projects/bhaijaan-brand-900.webp" srcset="assets/img/projects/bhaijaan-brand-900.webp 900w, assets/img/projects/bhaijaan-brand-1800.webp 1800w" sizes="(max-width:700px) 100vw, 60vw" width="900" height="600" loading="lazy" alt="The illuminated Bhaijaan sign on a carpet-lined wall inside the restaurant"></a><figcaption>Brand &amp; ambience</figcaption></figure>
+        <figure><a href="assets/img/projects/bhaijaan-interiors-1800.webp" data-cap="Restaurant interiors"><img src="assets/img/projects/bhaijaan-interiors-900.webp" srcset="assets/img/projects/bhaijaan-interiors-900.webp 900w, assets/img/projects/bhaijaan-interiors-1800.webp 1800w" sizes="(max-width:700px) 50vw, 40vw" width="900" height="600" loading="lazy" alt="Bhaijaan's arched bar with crystal chandeliers, striped marble walls and fringed bar stools"></a><figcaption>Restaurant interiors</figcaption></figure>
+        <figure><a href="assets/img/projects/bhaijaan-tableware-1800.webp" data-cap="Tableware &amp; material supply"><img src="assets/img/projects/bhaijaan-tableware-900.webp" srcset="assets/img/projects/bhaijaan-tableware-900.webp 900w, assets/img/projects/bhaijaan-tableware-1800.webp 1800w" sizes="(max-width:700px) 50vw, 40vw" width="900" height="600" loading="lazy" alt="A table at Bhaijaan set with handled serving bowls, a silver platter and Bhaijaan-branded plates"></a><figcaption>Tableware &amp; material supply</figcaption></figure>
+      </div>
+      <aside class="case-id">
+        <div class="eyebrow">Client</div>
+        <h3>Bhaijaan</h3>
+        <div class="case-loc"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Hicksville, Long Island, New York, USA</div>
+        <ul class="case-marks">
+          <li>Distinctive interiors</li>
+          <li>Curated tableware</li>
+          <li>An elevated dining experience</li>
+        </ul>
+        <dl class="case-facts">
+          <div><dt>Concept</dt><dd>Premium Indian dining</dd></div>
+          <div><dt>Our role</dt><dd>Hospitality consulting · Tableware sourcing · International supply</dd></div>
+          <div><dt>Stage</dt><dd>Pre-opening and operations</dd></div>
+          <div><dt>Supply route</dt><dd class="route"><span>India</span><i aria-hidden="true"></i><span>New York</span></dd></div>
+        </dl>
+      </aside>
+      <div class="case-body">
+        <p class="lead">At a restaurant built around its interiors and tableware, what goes on the table matters as much as the operation behind it. We supported Bhaijaan on both fronts: how the restaurant runs, and the tableware it serves on.</p>
+        <div class="case-parts">
+          <div class="case-part">
+            <span class="num">01</span>
+            <div>
+              <h4>Hospitality consulting</h4>
+              <p>Anmoll Nackra brought 29 years of food and beverage experience to the opening, with pre-opening support and operational guidance on the practical requirements of establishing and running a premium Indian restaurant.</p>
+            </div>
+          </div>
+          <div class="case-part">
+            <span class="num">02</span>
+            <div>
+              <h4>Tableware sourcing &amp; international supply</h4>
+              <p>We sourced the tableware showcased throughout the restaurant from India, from serving bowls and platters to crockery, and coordinated its supply to New York. The aim was the right products, finishes and presentation styles for Bhaijaan's dining concept, practical enough for everyday restaurant service.</p>
+            </div>
+          </div>
+        </div>
+        <div class="case-take"><b>What this project shows</b>Hospitality expertise and international sourcing under one roof: understanding what a restaurant needs, then finding and arranging the right materials from India for a business overseas.</div>
+        <div class="case-cta">
+          <a class="link-arrow" href="#enquire">Discuss your restaurant project</a>
+          <a class="link-arrow" href="products.html?cat=tableware">Browse our tableware</a>
+        </div>
+      </div>
+    </article>
+  </div>
+  <dialog class="lb" id="lb" aria-label="Photo"><img alt=""><p></p><button class="x" type="button" aria-label="Close">×</button></dialog>
+</section>
+
+<section id="enquire" class="alt">
   <div class="wrap formwrap">
     <div data-rv>
       <div class="eyebrow">Consulting enquiry</div>
@@ -92,23 +202,39 @@
   </div>
 </section>
 
-<script src="assets/site.js?v=6"></script>
+<script src="assets/catalogue.js"></script>
+<script src="assets/site.js?v=10"></script>
 <script>
+  // six areas, each grouping points from the client's original list of ten services
   var services = [
-    ['Restaurant concept development and format planning','Shaping the concept, positioning and format before you commit to a build.'],
-    ['Pre-opening planning and execution support','Planning and hands-on support to get a restaurant open well.'],
-    ['Menu development, menu engineering and product innovation','Menus that are distinctive, workable in the kitchen and profitable.'],
-    ['Recipe standardisation and kitchen systems','Consistent dishes and repeatable systems across shifts and outlets.'],
-    ['SOPs, operating manuals and process improvement','Clear procedures and manuals that teams can actually follow.'],
-    ['Food cost control, portion control and profitability improvement','Practical control over cost, portions and margin.'],
-    ['Base kitchen planning and production systems','Planning central production to support multiple outlets or formats.'],
-    ['Procurement processes and vendor coordination','Better buying processes and dependable vendor relationships.'],
-    ['Team development, training and operational structures','Building capable teams and the structures that support them.'],
-    ['Ongoing advisory and operational performance improvement','Continued guidance to keep performance improving after launch.']
+    ['Concept &amp; pre-opening', 'Concept, positioning and format planning before you commit to a build, then hands-on support to open well.',
+     '<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3z"/>'],
+    ['Menu development', 'Distinctive, profitable menus that work in the kitchen, through menu engineering and product innovation.',
+     '<path d="M6 3h10a3 3 0 0 1 3 3v15H9a3 3 0 0 1-3-3V3z"/><path d="M10 8h5M10 12h5M10 16h3"/>'],
+    ['Kitchen systems', 'Standardised recipes, kitchen systems and base kitchen planning, for consistent food across shifts and outlets.',
+     '<path d="M3 11h18M5 11v4a5 5 0 0 0 5 5h4a5 5 0 0 0 5-5v-4"/><path d="M9 7.5c0-1.2.6-1.8.6-3M14.4 7.5c0-1.2.6-1.8.6-3"/>'],
+    ['SOPs &amp; processes', 'Operating manuals, SOPs and process improvements that teams can actually follow.',
+     '<path d="M9 3h6v3H9zM7 4.5H5V21h14V4.5h-2"/><path d="M9 13l2 2 4-4"/>'],
+    ['Cost control &amp; procurement', 'Food cost and portion control, better buying processes and dependable vendors, for stronger margins.',
+     '<path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/>'],
+    ['Teams &amp; ongoing advisory', 'Training, team structures and continued guidance to keep performance improving after launch.',
+     '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6M16 4.7a3.5 3.5 0 0 1 0 6.6M18 14.4c2.1.7 3.5 2.7 3.5 5.6"/>']
   ];
-  document.getElementById('svc10').innerHTML = services.map(function(s, i){
-    return '<div class="s"><b class="n" aria-hidden="true"></b><div><h3>' + s[0] + '</h3></div></div>';
+  document.getElementById('svc').innerHTML = services.map(function(s){
+    return '<div class="card"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24">' + s[2] + '</svg></div><h3>' + s[0] + '</h3><p>' + s[1] + '</p></div>';
   }).join('');
+  // Bhaijaan photos open larger in a lightbox (the links still open the image on their own without script)
+  var lb = document.getElementById('lb'), lbImg = lb.querySelector('img');
+  document.querySelectorAll('.case-gallery a').forEach(function(a){
+    a.addEventListener('click', function(e){
+      if(!lb.showModal) return;
+      e.preventDefault();
+      lbImg.src = a.href; lbImg.alt = a.querySelector('img').alt;
+      lb.querySelector('p').textContent = a.dataset.cap;
+      lb.showModal();
+    });
+  });
+  lb.addEventListener('click', function(e){ if(e.target !== lbImg) lb.close(); });
   D10.pageHero(); D10.reveal(); D10.countUp();
   document.getElementById('form').addEventListener('submit', function(e){
     e.preventDefault();

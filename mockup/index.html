@@ -7,12 +7,12 @@
 <title>Double 10 Ventures — Your Partner in Hospitality Growth (Mockup)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap">
-<link rel="stylesheet" href="assets/site.css?v=6">
+<link rel="stylesheet" href="assets/site.css?v=12">
 <style>
 /* opening animation: logo intro, then a curtain lifts to reveal the hero photo */
 .intro{position:fixed;inset:0;z-index:100;background:var(--cream);display:grid;place-items:center;transition:transform 1.1s cubic-bezier(.8,0,.2,1)}
 .intro .mark{display:grid;place-items:center;gap:18px}
-.intro img{height:120px;mix-blend-mode:multiply;opacity:0;transform:scale(.85);animation:logoIn 1s .15s var(--ease) forwards}
+.intro img{height:120px;opacity:0;transform:scale(.85);animation:logoIn 1s .15s var(--ease) forwards}
 .intro .bar{width:180px;height:2px;background:var(--sand);overflow:hidden;border-radius:2px}
 .intro .bar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--gold-2),var(--amber));transform:scaleX(0);transform-origin:left;animation:load 1.2s .3s var(--ease) forwards}
 .intro small{font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);opacity:0;animation:rise .8s .5s forwards}
@@ -45,14 +45,6 @@ body.ready .hero .eyebrow::before{width:46px}
 .hero h1{font-size:clamp(1.9rem,8.4vw,5rem);margin:0 0 20px;text-shadow:0 4px 30px rgba(0,0,0,.25)}
 .hero h1 em{font-style:italic}
 .hero h1 .ln{display:block;white-space:nowrap}
-/* founder photo */
-.portrait.photo{aspect-ratio:1;max-width:440px;width:100%;padding:0;margin:0;justify-self:center;background:#e9e2d3}
-.portrait.photo::before{z-index:2;pointer-events:none;border-color:rgba(233,196,106,.7)}
-.portrait.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;transition:transform 1.2s var(--ease)}
-.portrait.photo:hover img{transform:scale(1.04)}
-.founder .role{font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:-6px 0 18px}
-.founder h2:first-child{margin-top:0}
-@media(max-width:960px){.portrait.photo{aspect-ratio:1;max-width:380px}}
 /* two-line section heading that breaks in the same place on every screen */
 .h2-lines span{display:block;white-space:nowrap}
 @media(max-width:560px){.h2-lines{font-size:clamp(1.5rem,7.6vw,2.2rem)}}
@@ -137,7 +129,7 @@ body.ready .hero .eyebrow::before{width:46px}
 
 <div class="intro" aria-hidden="true">
   <div class="mark">
-    <img src="assets/logo.jpg" alt="">
+    <img src="assets/logo.png" alt="">
     <div class="bar"><i></i></div>
   </div>
 </div>
@@ -267,7 +259,8 @@ body.ready .hero .eyebrow::before{width:46px}
   </div>
 </section>
 
-<script src="assets/site.js?v=6"></script>
+<script src="assets/catalogue.js"></script>
+<script src="assets/site.js?v=10"></script>
 <script src="assets/projects.js?v=6"></script>
 <script>
 (function(){

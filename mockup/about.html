@@ -7,14 +7,46 @@
 <title>About Us — Double 10 Ventures (Mockup)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap">
-<link rel="stylesheet" href="assets/site.css?v=6">
+<link rel="stylesheet" href="assets/site.css?v=12">
 <style>
 .lead-big{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,2.4vw,1.9rem);line-height:1.45;color:var(--brown);max-width:900px;margin:0 auto;text-align:center}
 .lead-big em{color:var(--gold);font-style:italic}
-.exp-list{list-style:none;display:grid;gap:12px;margin:18px 0 26px}
-.exp-list li{display:flex;gap:12px;align-items:flex-start;font-size:.97rem}
-.exp-list li::before{content:"";flex:none;width:20px;height:20px;margin-top:2px;border-radius:50%;background:var(--gold) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/12px no-repeat}
-.founder .portrait .yrs{font-size:clamp(5rem,10vw,7rem)}
+/* people */
+.sides{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:-2px 0 22px}
+.sides div{background:#fff;border:1px solid var(--sand);border-left:3px solid var(--gold);border-radius:0 12px 12px 0;padding:14px 16px}
+.sides b{display:block;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.sides span{display:block;font-size:.9rem;line-height:1.5;color:var(--brown)}
+/* experience cards */
+.journey .exp p b{color:var(--brown)}
+.places{list-style:none;display:grid;gap:8px;margin-top:12px}
+.places li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-bottom:8px;border-bottom:1px dashed var(--sand);font-size:.92rem}
+.places li:last-child{padding-bottom:0;border-bottom:0}
+.places span{font-size:.82rem;color:var(--brown-2)}
+.places a b{border-bottom:1px solid var(--gold-2)}
+.places a:hover b{color:var(--gold)}
+.exp.now{background:linear-gradient(160deg,var(--brown),#1d5a47);border-color:var(--brown);color:#fff}
+.exp.now h3{color:#fff}
+.exp.now .loc{color:#BCD0C6}
+.exp.now .loc svg{stroke:var(--gold-2)}
+.exp.now p{color:#D5E3DB}
+/* Avinandan: text first on wide screens, monogram panel on top on phones */
+.founder.flip{grid-template-columns:1.2fr .8fr}
+.founder .chips{display:flex;flex-wrap:wrap;gap:8px}
+.founder .chips span{font-size:.78rem;font-weight:600;padding:6px 14px;border-radius:999px;background:var(--cream-2);border:1px solid var(--sand)}
+.portrait.monogram{width:100%;max-width:440px;justify-self:center}
+.portrait.monogram .yrs{letter-spacing:.04em}
+/* founder's quote */
+.quote-band{position:relative;overflow:hidden;isolation:isolate;background:var(--brown);color:#fff;text-align:center;padding:100px 0}
+.quote-band::before{content:"\201C";position:absolute;left:50%;top:-50px;transform:translateX(-50%);font-family:'Playfair Display',serif;font-size:24rem;line-height:1;color:rgba(201,162,75,.12);z-index:-1;pointer-events:none}
+.quote-band figure{margin:0 auto}
+.quote-band .eyebrow{color:var(--gold-2)}
+.quote-band blockquote{margin:18px auto 0;max-width:820px;font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.45rem,3vw,2.2rem);line-height:1.45;color:#F3E7C9}
+.quote-band .cite{display:inline-flex;align-items:center;gap:14px;margin-top:34px;text-align:left}
+.quote-band .cite img{width:56px;height:56px;border-radius:50%;object-fit:cover;object-position:50% 25%;border:2px solid var(--gold-2)}
+.quote-band .cite b{display:block;font-size:1rem}
+.quote-band .cite span{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-2)}
+@media(max-width:960px){.founder.flip{grid-template-columns:1fr}.founder.flip .portrait{order:-1}.portrait.monogram{max-width:440px}}
+@media(max-width:560px){.sides{grid-template-columns:1fr}.quote-band{padding:72px 0}.quote-band::before{font-size:15rem;top:-24px}}
 </style>
 </head>
 <body data-page="about">
@@ -35,23 +67,29 @@
   </div>
 </section>
 
-<section>
-  <div class="wrap founder">
-    <div class="portrait" data-rv>
-      <div><div class="yrs"><span data-count="29">29</span></div><small>Years in hospitality</small></div>
-      <div class="ph-note">Founder portrait and name to be supplied by the client</div>
+<section id="people">
+  <div class="wrap">
+    <div class="head">
+      <div class="ghost">People</div>
+      <div class="eyebrow">The people behind Double 10 Ventures</div>
+      <h2>Built on experience, trust and collaboration</h2>
     </div>
-    <div data-rv>
-      <div class="eyebrow">About the founder</div>
-      <h2>29 years of food &amp; beverage and hospitality experience</h2>
-      <p>Built on real operating experience and a practical understanding of how restaurants work.</p>
-      <ul class="exp-list">
-        <li>Restaurant operations and kitchen systems</li>
-        <li>Menu development and multi-format expansion</li>
-        <li>Cost control and procurement</li>
-        <li>Consulting engagements across markets</li>
-      </ul>
-      <a class="btn btn-gold" href="projects.html">See the Work →</a>
+    <div class="founder">
+      <figure class="portrait photo" data-rv>
+        <img src="assets/img/founder.webp" alt="Anmoll Nackra, Founder of Double 10 Ventures" loading="lazy">
+      </figure>
+      <div data-rv>
+        <div class="eyebrow">Founder, Double 10 Ventures</div>
+        <h2>Anmoll Nackra</h2>
+        <p>With 29 years of hospitality experience, Anmoll brings a combination of senior operational leadership and entrepreneurial insight. As Director of Operations at Punjabi By Nature (India), he developed extensive expertise in restaurant operations, systems, menu development and business management.</p>
+        <p>His journey spans The Masala Story (India) and consulting engagements with Namaste India (Malaysia), Gol Chakkar Cafe (UAE) and Bhaijaan (USA). These experiences have shaped his understanding of hospitality from both sides:</p>
+        <div class="sides">
+          <div><b>Operations</b><span>Managing restaurant operations at a strategic level</span></div>
+          <div><b>Supplies</b><span>Recognising the practical needs of Indian restaurants, from tableware and kitchen supplies to functional, well-designed food packaging</span></div>
+        </div>
+        <p>Double 10 Ventures brings these strengths together through hospitality consulting and restaurant supplies, offering solutions grounded in real industry experience.</p>
+        <a class="btn btn-gold" href="projects.html">See the Work →</a>
+      </div>
     </div>
   </div>
 </section>
@@ -59,20 +97,63 @@
 <section class="alt">
   <div class="wrap">
     <div class="head">
-      <div class="ghost">Career</div>
-      <div class="eyebrow">Professional experience &amp; background</div>
-      <h2>A career in hospitality</h2>
-      <p><span class="sample">Career timeline and selected achievements to be provided by the client</span></p>
+      <div class="ghost">Journey</div>
+      <div class="eyebrow">Professional experience</div>
+      <h2>Hospitality experience across four countries</h2>
     </div>
-    <div class="wrap narrow" style="padding:0">
-      <div class="ptl" data-rv>
-        <div class="t"><b>Restaurant operations</b><span>Running restaurant floors and kitchens, and growing brands across multiple formats.</span></div>
-        <div class="t"><b>Own brand &amp; cloud kitchen</b><span>Building and operating an own brand, including delivery-first cloud kitchens.</span></div>
-        <div class="t"><b>Consulting</b><span>Advising restaurants in India, Malaysia, the UAE and the United States on concepts, menus and systems.</span></div>
-        <div class="t"><b>Supply &amp; sourcing</b><span>Sourcing tableware, buffetware and packaging for restaurants in India and overseas.</span></div>
-      </div>
+    <div class="grid4x journey">
+      <article class="exp">
+        <span class="tag">Operations leadership</span>
+        <h3>Punjabi By Nature</h3>
+        <div class="loc"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>India</div>
+        <p><b>Director of Operations.</b> Restaurant operations, systems, menu development and business management.</p>
+      </article>
+      <article class="exp">
+        <span class="tag">Own brand</span>
+        <h3>The Masala Story</h3>
+        <div class="loc"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>India</div>
+        <p>Own-brand and cloud-kitchen experience.</p>
+      </article>
+      <article class="exp">
+        <span class="tag">Consulting</span>
+        <h3>International engagements</h3>
+        <ul class="places">
+          <li><b>Namaste India</b><span>Malaysia</span></li>
+          <li><b>Gol Chakkar Cafe</b><span>UAE</span></li>
+          <li><a href="consulting.html#bhaijaan"><b>Bhaijaan</b></a><span>USA</span></li>
+        </ul>
+      </article>
+      <article class="exp now">
+        <span class="tag gold">Today</span>
+        <h3>Double 10 Ventures</h3>
+        <div class="loc"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>Founder</div>
+        <p>Hospitality consulting and restaurant supplies, grounded in real industry experience.</p>
+      </article>
     </div>
   </div>
+</section>
+
+<section>
+  <div class="wrap founder flip">
+    <div data-rv>
+      <div class="eyebrow">An integral part of the Double 10 journey</div>
+      <h2>Avinandan Banerjee</h2>
+      <p>Representing Curry Fwd, Avinandan brings creative vision, a deep understanding of restaurant concepts and a shared passion for hospitality. Our association across several restaurant outlets designed by him has grown into a relationship built on trust, shared values and complementary strengths.</p>
+      <p>His contribution extends beyond individual projects. Avinandan has become an integral part of the Double 10 journey, bringing perspective, creative collaboration and a presence that has helped shape what the venture represents today.</p>
+      <div class="chips"><span>Creative vision</span><span>Restaurant concepts</span><span>Collaboration</span></div>
+    </div>
+    <div class="portrait monogram" data-rv aria-hidden="true">
+      <div><div class="yrs">AB</div><small>Curry Fwd</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="quote-band">
+  <figure class="wrap narrow" data-rv>
+    <div class="eyebrow">In the founder's words</div>
+    <blockquote>Double 10 is my vision, but the journey carries the imprint of people who have been an integral part of it. Avinandan is, without doubt, one of them.</blockquote>
+    <figcaption class="cite"><img src="assets/img/founder.webp" alt="" loading="lazy"><div><b>Anmoll Nackra</b><span>Founder, Double 10 Ventures</span></div></figcaption>
+  </figure>
 </section>
 
 <section>
@@ -100,7 +181,8 @@
   </div>
 </section>
 
-<script src="assets/site.js?v=6"></script>
+<script src="assets/catalogue.js"></script>
+<script src="assets/site.js?v=10"></script>
 <script>D10.pageHero(); D10.reveal(); D10.countUp();</script>
 </body>
 </html>

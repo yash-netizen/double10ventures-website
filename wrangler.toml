@@ -1,0 +1,13 @@
+# Cloudflare Pages project: the site in mockup/, the API in functions/, products in D1, uploaded photos in R2.
+name = "double10ventures"
+pages_build_output_dir = "mockup"
+compatibility_date = "2026-09-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "d10-catalogue"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"   # printed by: npx wrangler d1 create d10-catalogue
+
+[[r2_buckets]]
+binding = "MEDIA"
+bucket_name = "d10-media"

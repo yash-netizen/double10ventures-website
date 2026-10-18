@@ -4,5 +4,11 @@
 !/index.html
 !/README.md
 !/.gitignore
+!/functions/
+!/lib/
+!/db/
+!/wrangler.toml
+!/package.json
+!/package-lock.json
 .DS_Store
 mockup/assets/img/products/buf-0001-round-chafing-dish.png
